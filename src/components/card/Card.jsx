@@ -4,6 +4,10 @@ import Button from "../button/Button";
 import styles from "./Card.module.scss";
 
 const Card = ({ product, cart, setCart }) => {
+  const handleAddToCart = () => {
+    setCart([...cart, { ...product, quantity: 1 }]);
+  };
+
   return (
     <div className={styles.card}>
       <img src={product.image_url} alt={product.product_name} />
@@ -26,7 +30,7 @@ const Card = ({ product, cart, setCart }) => {
 
       <strong>{product.price}</strong>
       <div>
-        <Button onClick={() => setCart([...cart, product.id])}>
+        <Button onClick={handleAddToCart}>
           <FaCartShopping />
           <span style={{ marginLeft: "0.8em" }}>Add to Cart</span>
         </Button>
